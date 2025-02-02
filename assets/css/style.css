@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: grey;
+    padding-left: 10px;
+    border: 1px solid ;
+}
+
+.container h1{
+   border-bottom: 1px solid rgb(205, 201, 201);
+   padding-bottom: 10px;
+}
+.container p{
+    margin: 0;
+}
+.containerInput{
+    display: flex;
+    width: 100%;
+    height: 50px;
+
+}
+#nuevaTarea{
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+#btn-agregarTarea{
+    width: 15%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+.containerDetalleTareas{
+    display: flex;
+   width: 100%;
+    padding-top: 10px;
+}
+
+.containerConteoTareas{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    padding-top: 10px;
+
+}
+.contenedorLista{
+    display: flex;
+    width: 64%;
+    justify-content: center;
+}
+.contenedorLista h3{
+    width:  100px;
+}
