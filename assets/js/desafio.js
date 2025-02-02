@@ -21,3 +21,59 @@
 // 5 - Contar el total de tareas realizadas.
 
 // 6 - El código incluye al menos 3 tareas iniciales en el arrego y estas se muestran en la página web recorriendo el arreglo (for of || forEach)
+/* ---------------------------------------*/
+
+// Crear el arreglo donde se almacenan los objetos Lista de tareas
+const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false}];
+
+// 2- Necesitamos el contendor  donde insertaremos las tareas
+const listaTareas = document.querySelector("tbody");
+renderizarLista()
+
+/* 1- Primero tenemos que obtener los elementos html que interactuan */
+const inputTarea = document.querySelector("#nuevaTarea");
+const btnAgregarTarea = document.querySelector("#btn-agregarTarea");
+
+
+//3.- Eliminaer elemento
+function borrarTarea(id){
+    const buscarIndex = listToDo.findIndex((e)=> e.id === id);
+    listToDo.splice(buscarIndex,1);
+
+    renderizarLista(); // Si no se renderiza nuevamente no realiza el cambio en el HTML
+}
+
+
+
+
+
+btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agregar
+        // Creamos el nuevo ID
+        const nuevoId = listToDo[listToDo.length-1].id + 1;
+        
+        // creamos la nueva tarea  
+          const nuevaTarea = {
+            id: nuevoId,
+            nombre: inputTarea.value,
+            estado: false,
+          };
+          listToDo.push(nuevaTarea);
+          
+          renderizarLista()
+          //nputTarea.value = "";  // vaciamos el valor del input
+} )
+
+
+function renderizarLista(){
+    let html = "";
+    for(let list of listToDo){
+      html+=`
+              <tr>
+                  <td>${list.id}</td>
+                  <td>${list.nombre}</td>
+                  <td><input type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
+              </tr>        
+      `
+    }
+    listaTareas.innerHTML = html
+}

@@ -48,11 +48,13 @@ body{
     padding-top: 10px;
 
 }
-.contenedorLista{
-    display: flex;
+.containerListarlist{
     width: 64%;
-    justify-content: center;
+    text-align: left;
 }
-.contenedorLista h3{
-    width:  100px;
+.containerListarlist th{
+    width:  150px;
+}
+.containerListarlist th:first-child{
+    width:  10px;
 }
