@@ -66,28 +66,35 @@ btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agrega
 } )
 
 
+//4.- actualizar el total de tareas y tareas realizadas
 
 
 function renderizarLista(){
     let html = "";
-    for(let list of listToDo){  
+    for(let list of listToDo){
+       
       html+=`
               <tr>
                   <td>${list.id}</td>
                   <td>${list.nombre}</td>
                   <td><input id="checkElement" type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
               </tr>        
-      `} 
+      `}
+    
+        
+    // Aqui insertamos el total de tareas
     const totalTareas = document.querySelector("#cantTareasTotal");
     totalTareas.textContent = `total: ${listToDo.length}`   
     listaTareas.innerHTML = html
+
+    const realizadas = document.querySelector("#cantRalizadas");
+    const estadoCheckbox = document.querySelector("#checkElement");
+    estadoCheckbox.addEventListener("change",()=>{
+        alert("check")
+        })
 }
 
 
-const realizadas = document.querySelector("#cantRalizadas");
-const estadoCheckbox = document.querySelector("#checkElement");
 
-estadoCheckbox.addEventListener("change",()=>{
+
    
-})  //4.- actualizar el total de tareas 
-// Aqui insertamos el total de tareasS
