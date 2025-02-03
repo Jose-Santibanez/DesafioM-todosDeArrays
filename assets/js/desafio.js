@@ -30,7 +30,7 @@ const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false}];
 const listaTareas = document.querySelector("tbody");
 renderizarLista()
 
-/* 1- Primero tenemos que obtener los elementos html que interactuan */
+/* 2- Primero tenemos que obtener los elementos html que interactuan */
 const inputTarea = document.querySelector("#nuevaTarea");
 const btnAgregarTarea = document.querySelector("#btn-agregarTarea");
 
@@ -42,6 +42,8 @@ function borrarTarea(id){
 
     renderizarLista(); // Si no se renderiza nuevamente no realiza el cambio en el HTML
 }
+
+
 
 
 
@@ -60,20 +62,27 @@ btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agrega
           listToDo.push(nuevaTarea);
           
           renderizarLista()
-          //nputTarea.value = "";  // vaciamos el valor del input
+          inputTarea.value = "";  // vaciamos el valor del input
 } )
+
+
+//4.- actualizar el total de tareas y tareas realizadas
 
 
 function renderizarLista(){
     let html = "";
     for(let list of listToDo){
+       
       html+=`
               <tr>
                   <td>${list.id}</td>
                   <td>${list.nombre}</td>
                   <td><input type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
               </tr>        
-      `
-    }
+      `}
+
+    const totalTareas = document.querySelector("#cantTareasTotal");
+    totalTareas.textContent = `total: ${listToDo.length}`
     listaTareas.innerHTML = html
+   
 }
