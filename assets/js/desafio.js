@@ -24,8 +24,13 @@
 /* ---------------------------------------*/
 
 // Crear el arreglo donde se almacenan los objetos Lista de tareas
-const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false}];
+const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false},
+    {id: 2 , nombre:"capturar el evento del checkbox", estado : false},
+    {id: 3 , nombre:"cambiar el elemento html tareas realizadas", estado : false}
+];
 
+let buscaridEstado =  listToDo.findIndex((e) => e.id === listToDo[2].id);
+console.log(buscaridEstado);
 // 2- Necesitamos el contendor  donde insertaremos las tareas
 const listaTareas = document.querySelector("tbody");
 renderizarLista()
@@ -44,8 +49,28 @@ function borrarTarea(id){
 }
 
 
+//4.- actualizar el total de tareas y tareas realizadas
+const contenedorContadorDeTareas = document.querySelector(".containerConteoTareas")
+function renderContadores(){
+   
+    const totalTareas = listToDo.length;
+    const contarRealizadas = listToDo.filter((e) => e.estado === true);
+    console.log(contarRealizadas.length);
+    /* const totalrealizadas = contarRealizadas.length
+    contenedorContadorDeTareas.innerHTML = `
+                <span">Total Realizadas: ${totalrealizadas}</span>
+                <span">total: ${totalTareas}</span>
+                `; */
+}
 
-
+function cambiarEstado(id){
+    let indexEstado =  listToDo.findIndex((e) => e.id === id);
+    console.log(indexEstado);
+   /*  
+    listToDo.splice(buscaridEstado,1,true);
+    renderContadores() */
+  
+}
 
 
 
@@ -66,8 +91,6 @@ btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agrega
 } )
 
 
-//4.- actualizar el total de tareas y tareas realizadas
-
 
 function renderizarLista(){
     let html = "";
@@ -77,24 +100,18 @@ function renderizarLista(){
               <tr>
                   <td>${list.id}</td>
                   <td>${list.nombre}</td>
-                  <td><input id="checkElement" type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
+                  <td><input onChange="cambiarEstado(${list.id})" id="checkElement" type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
               </tr>        
       `}
     
         
     // Aqui insertamos el total de tareas
-    const totalTareas = document.querySelector("#cantTareasTotal");
-    totalTareas.textContent = `total: ${listToDo.length}`   
+    /* const totalTareas = document.querySelector("#cantTareasTotal");
+    totalTareas.textContent = `total: ${listToDo.length}`    */
     listaTareas.innerHTML = html
 
-    const realizadas = document.querySelector("#cantRalizadas");
-    const estadoCheckbox = document.querySelector("#checkElement");
-    estadoCheckbox.addEventListener("change",()=>{
-        alert("check")
-        })
 }
 
 
 
 
-   
