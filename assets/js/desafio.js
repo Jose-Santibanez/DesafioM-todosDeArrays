@@ -61,10 +61,10 @@ function renderContadores(){
 // le damos el parámetro ID  que este sea buscado dinamicamente
 function cambiarEstado(id){
     let indexEstado =  listToDo.findIndex((e) => e.id === id);
-    if(listToDo[indexEstado].estado !== true){
-        
-    listToDo[indexEstado].estado = true;
-    renderContadores()
+    if(listToDo[indexEstado].estado === false){    
+        listToDo[indexEstado].estado = true;
+        renderContadores()
+        console.log(listToDo);
     }else{
         listToDo[indexEstado].estado = false;
         renderContadores()
@@ -102,7 +102,7 @@ function renderizarLista(){
               <tr>
                   <td>${list.id}</td>
                   <td>${list.nombre}</td>
-                  <td><input onChange="cambiarEstado(${list.id})" id="checkElement" type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
+                  <td><input onclick="cambiarEstado(${list.id})" id="checkElement" type="checkbox"><i onclick="borrarTarea(${list.id})" class="fa fa-trash" aria-hidden="true"></i></td>
               </tr>        
       `}
     
