@@ -55,20 +55,19 @@ function renderContadores(){
    
     const totalTareas = listToDo.length;
     const contarRealizadas = listToDo.filter((e) => e.estado === true);
-    console.log(contarRealizadas.length);
-    /* const totalrealizadas = contarRealizadas.length
     contenedorContadorDeTareas.innerHTML = `
-                <span">Total Realizadas: ${totalrealizadas}</span>
+                <span">Total Realizadas: ${contarRealizadas.length}</span>
                 <span">total: ${totalTareas}</span>
-                `; */
+                `; 
 }
 
+/*  Función para cambiar es estado del boton  */
+// le damos el parámetro ID  que este sea buscado dinamicamente
 function cambiarEstado(id){
+    //buscamos el indice del elemento que cambia a realizado 
     let indexEstado =  listToDo.findIndex((e) => e.id === id);
-    console.log(indexEstado);
-   /*  
-    listToDo.splice(buscaridEstado,1,true);
-    renderContadores() */
+    listToDo[indexEstado].estado = true;
+    renderContadores()
   
 }
 
