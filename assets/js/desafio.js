@@ -60,9 +60,13 @@ function renderContadores(){
 /*  Función para cambiar es estado del boton  */
 // le damos el parámetro ID  que este sea buscado dinamicamente
 function cambiarEstado(id){
+   
     //buscamos el indice del elemento que cambia a realizado 
     let indexEstado =  listToDo.findIndex((e) => e.id === id);
-    listToDo[indexEstado].estado = true;
+    if(!listToDo[indexEstado].estado){
+        listToDo[indexEstado].estado = true;      
+    }else{ listToDo[indexEstado].estado = false;}
+   
     renderContadores()
   
 }
