@@ -41,8 +41,10 @@ const btnAgregarTarea = document.querySelector("#btn-agregarTarea");
 function borrarTarea(id){
     const buscarIndex = listToDo.findIndex((e)=> e.id === id);
     listToDo.splice(buscarIndex,1);
-
+    listToDo[buscarIndex].estado = false;
+    renderContadores()
     renderizarLista(); // Si no se renderiza nuevamente no realiza el cambio en el HTML
+    
 }
 
 //4.- actualizar el total de tareas y tareas realizadas
@@ -115,9 +117,3 @@ function renderizarLista(){
 }
 
 
-/* 
-function cambiarEstado(id){
-   
- 
-  
-} */
