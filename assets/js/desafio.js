@@ -60,15 +60,15 @@ function renderContadores(){
 /*  Función para cambiar es estado del boton  */
 // le damos el parámetro ID  que este sea buscado dinamicamente
 function cambiarEstado(id){
-   
-    //buscamos el indice del elemento que cambia a realizado 
     let indexEstado =  listToDo.findIndex((e) => e.id === id);
-    if(!listToDo[indexEstado].estado){
-        listToDo[indexEstado].estado = true;      
-    }else{ listToDo[indexEstado].estado = false;}
-   
+    if(listToDo[indexEstado].estado !== true){
+        
+    listToDo[indexEstado].estado = true;
     renderContadores()
-  
+    }else{
+        listToDo[indexEstado].estado = false;
+        renderContadores()
+    }
 }
 
 
@@ -89,7 +89,7 @@ btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agrega
        }else{
         alert("texto vacio")
        }
-
+       inputTarea.value=""
 } )
 
 
@@ -115,5 +115,9 @@ function renderizarLista(){
 }
 
 
-
-
+/* 
+function cambiarEstado(id){
+   
+ 
+  
+} */
