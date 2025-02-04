@@ -29,8 +29,6 @@ const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false},
     {id: 3 , nombre:"cambiar el elemento html tareas realizadas", estado : false}
 ];
 
-let buscaridEstado =  listToDo.findIndex((e) => e.id === listToDo[2].id);
-console.log(buscaridEstado);
 // 2- Necesitamos el contendor  donde insertaremos las tareas
 const listaTareas = document.querySelector("tbody");
 renderizarLista()
