@@ -49,6 +49,7 @@ function borrarTarea(id){
 
 //4.- actualizar el total de tareas y tareas realizadas
 const contenedorContadorDeTareas = document.querySelector(".containerConteoTareas")
+renderContadores()
 function renderContadores(){
    
     const totalTareas = listToDo.length;
