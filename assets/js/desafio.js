@@ -23,7 +23,7 @@
 // 6 - El código incluye al menos 3 tareas iniciales en el arrego y estas se muestran en la página web recorriendo el arreglo (for of || forEach)
 /* ---------------------------------------*/
 
-// Crear el arreglo donde se almacenan los objetos Lista de tareas
+//1.-  Crear el arreglo donde se almacenan los objetos Lista de tareas
 const listToDo = [{id: 0 , nombre:"crear mi Primer ToDoList", estado : false},
     {id: 2 , nombre:"capturar el evento del checkbox", estado : false},
     {id: 3 , nombre:"cambiar el elemento html tareas realizadas", estado : false}
@@ -37,7 +37,6 @@ renderizarLista()
 const inputTarea = document.querySelector("#nuevaTarea");
 const btnAgregarTarea = document.querySelector("#btn-agregarTarea");
 
-
 //3.- Eliminaer elemento
 function borrarTarea(id){
     const buscarIndex = listToDo.findIndex((e)=> e.id === id);
@@ -46,12 +45,10 @@ function borrarTarea(id){
     renderizarLista(); // Si no se renderiza nuevamente no realiza el cambio en el HTML
 }
 
-
 //4.- actualizar el total de tareas y tareas realizadas
 const contenedorContadorDeTareas = document.querySelector(".containerConteoTareas")
 renderContadores()
-function renderContadores(){
-   
+function renderContadores(){  
     const totalTareas = listToDo.length;
     const contarRealizadas = listToDo.filter((e) => e.estado === true);
     contenedorContadorDeTareas.innerHTML = `
@@ -73,19 +70,22 @@ function cambiarEstado(id){
 
 
 btnAgregarTarea.addEventListener("click",()=>{   // Aqui se crea el boton agregar
-        // Creamos el nuevo ID
-        const nuevoId = listToDo[listToDo.length-1].id + 1;
-        
-        // creamos la nueva tarea  
-          const nuevaTarea = {
-            id: nuevoId,
-            nombre: inputTarea.value,
-            estado: false,
-          };
-          listToDo.push(nuevaTarea);
-          
-          renderizarLista()
-          inputTarea.value = "";  // vaciamos el valor del input
+       if(inputTarea.value!== ""){
+               // Creamos el nuevo ID
+                const nuevoId = listToDo[listToDo.length-1].id + 1;
+                console.log(nuevoId);
+          // creamos la nueva tarea  
+                const nuevaTarea = {
+                id: nuevoId,
+                nombre: inputTarea.value,
+                estado: false,
+              };
+                listToDo.push(nuevaTarea);  // Inserta el elmeneto al final del array gracias a push()
+                renderizarLista()
+       }else{
+        alert("texto vacio")
+       }
+
 } )
 
 
